@@ -1,7 +1,26 @@
-<h2><%= @task.title %></h2>
-<%= link_to "Edit this task", edit_task_path(@task) %>
-<p><%= @task.details %></p>
-<p>This task is <%= @task.completed ? "completed" : "not completed" %>.</p>
+<div class="top">
+  <h2><%= @task.title %></h2>
+  <%= link_to(edit_task_path(@task), class: "button-edit") do %>
+    <i class="fa-solid fa-pen-to-square"></i> Edit this task
+  <% end %>
+</div>
+
+<div class="alert alert-primary">
+  <%= @task.details %>
+</div>
+
+<p id="completion">
+  <% if @task.completed %>
+    <span class="checkmark"><i class="fa-regular fa-square-check"></i></span>
+  <% else %>
+    <span class="checkmark"><i class="fa-regular fa-square"></i></span>
+  <% end %>
+  <em>This task is <strong><%= @task.completed ? "completed" : "not completed" %></strong>.</em>
+</p>
 
 <hr>
-<%= link_to "Back to list", tasks_path %>
+<div class="box-link">
+  <%= link_to(tasks_path) do %>
+    <i class="fa-solid fa-rotate-left"></i> Back to list
+  <% end %>
+</div>
